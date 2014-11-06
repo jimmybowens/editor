@@ -15,20 +15,25 @@ public class Editor {
  
  @SuppressWarnings({ "rawtypes", "unchecked", "resource" })
  public void insert(){
-  data.add(insert.nextLine());
+  data.add(getTextInput.nextLine());
  }
  
  public void delete(){}
  
  public void print(){
-  String token = getTextInput.nextLine();
-  System.out.println(token);
+  if(data.size() == 0){
+   System.out.println("You do not have any text in the file.");
+  }
+  else{
+   for(int i = 0; i < data.size(); i ++){
+    System.out.println(i + " "+ data.get(i));
+   }
+  }
  }
  
  public void getInput(){
   String token = getTextInput.next();
   if(token.equalsIgnoreCase("$insert")){
-   System.out.println("Enter text to insert");
    insert();
    getInput();
   }
