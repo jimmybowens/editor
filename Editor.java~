@@ -22,7 +22,7 @@ public class Editor {
   while(getTextInput.hasNext()){
    if(getTextInput.next().equalsIgnoreCase("$")){
     while(hasCommand != true){
-     if(getTextInput.nextLine().equalsIgnoreCase("insert")){
+     if(getTextInput.next().equalsIgnoreCase("insert")){
       insert(getTextInput,data);
       hasCommand = true;
       getInput();
