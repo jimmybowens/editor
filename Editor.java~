@@ -1,9 +1,0 @@
-public class Editor{
-  public Editor{
-  
-  }//end of editor constructor
-  
-  public static void main(String args[]) {
-    
-  }//end of main
-}
