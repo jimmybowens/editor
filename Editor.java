@@ -27,23 +27,20 @@ public class Editor {
  
  public void getInput(){
   String token = getTextInput.next();
-  if (token.equalsIgnoreCase("$")){
-   token = getTextInput.next();
-   if(token.equalsIgnoreCase("insert")){
-    System.out.println("Enter text to insert");
-    insert();
-    getInput();
-   }
-   else if(token.equalsIgnoreCase("delete")){
-    insert();
-    getInput();
-   }
-   else if(token.equalsIgnoreCase("print")){
-    print();
-    getInput();
-   }
-   
+  if(token.equalsIgnoreCase("$insert")){
+   System.out.println("Enter text to insert");
+   insert();
+   getInput();
   }
+  else if(token.equalsIgnoreCase("$delete")){
+   insert();
+   getInput();
+  }
+  else if(token.equalsIgnoreCase("$print")){
+   print();
+   getInput();
+  }
+   
   else{
    System.out.println("Please enter a '$' followed by a command.");
    getInput();
