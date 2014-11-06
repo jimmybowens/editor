@@ -7,26 +7,39 @@ public class Editor {
  public static boolean run = true;
  @SuppressWarnings("rawtypes")
  public static LinkedList data = new LinkedList();
+ public static Scanner getTextInput = new Scanner(System.in);
+ public static Scanner insert = new Scanner(System.in);
  public Editor(){
   getInput();
  }
  
- @SuppressWarnings("rawtypes")
- public void insert(String token, LinkedList data){
-  System.out.println("TODO");
+ @SuppressWarnings({ "rawtypes", "unchecked", "resource" })
+ public void insert(){
+  data.add(insert.nextLine());
+ }
+ 
+ public void delete(){}
+ 
+ public void print(){
+  String token = getTextInput.nextLine();
+  System.out.println(token);
  }
  
  public void getInput(){
-  Scanner getTextInput = new Scanner(System.in);
   String token = getTextInput.next();
   if (token.equalsIgnoreCase("$")){
    token = getTextInput.next();
    if(token.equalsIgnoreCase("insert")){
-    insert(token, data);
+    System.out.println("Enter text to insert");
+    insert();
     getInput();
    }
    else if(token.equalsIgnoreCase("delete")){
-    insert(token, data);
+    insert();
+    getInput();
+   }
+   else if(token.equalsIgnoreCase("print")){
+    print();
     getInput();
    }
    
