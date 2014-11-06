@@ -12,27 +12,29 @@ public class Editor {
  }
  
  @SuppressWarnings("rawtypes")
- public void insert(Scanner input, LinkedList data){
+ public void insert(String token, LinkedList data){
   System.out.println("TODO");
  }
  
  public void getInput(){
   Scanner getTextInput = new Scanner(System.in);
-  boolean hasCommand = false;
-  while(getTextInput.hasNext()){
-   if(getTextInput.next().equalsIgnoreCase("$")){
-    while(hasCommand != true){
-     if(getTextInput.nextLine().equalsIgnoreCase("insert")){
-      insert(getTextInput,data);
-      hasCommand = true;
-      getInput();
-     }
-    }
+  String token = getTextInput.next();
+  if (token.equalsIgnoreCase("$")){
+   token = getTextInput.next();
+   if(token.equalsIgnoreCase("insert")){
+    insert(token, data);
+    getInput();
    }
+   else if(token.equalsIgnoreCase("delete")){
+    insert(token, data);
+    getInput();
+   }
+   
+  }
+  else{
    System.out.println("Please enter a '$' followed by a command.");
    getInput();
   }
-  
  }
 
  public static void main(String[] args) {
