@@ -1,60 +1,85 @@
 package editor;
 
-import java.util.LinkedList;
+//import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Editor {
  public static boolean run = true;
  @SuppressWarnings("rawtypes")
- public static LinkedList data = new LinkedList();
+ public static List data = new List();
  public static Scanner getTextInput = new Scanner(System.in);
  public static Scanner insert = new Scanner(System.in);
  public Editor(){
   getInput();
  }
  
+ //insert into the list
  @SuppressWarnings({ "rawtypes", "unchecked", "resource" })
  public void insert(){
-  data.add(getTextInput.nextLine());
+  data.addLast(getTextInput.nextLine());                             //add the remainder of the line to the list
  }
  
- public void delete(){}
+ //delete from the list
+ public void delete(int start, int end){
+   if(start <= end){
+     data.remove(start);
+     delete(start,end);
+   }
+   start++;
+ }
  
+ //print the contents of the list
  public void print(){
-  if(data.size() == 0){
+  if(data.empty()){
    System.out.println("You do not have any text in the file.");
   }
   else{
-   for(int i = 0; i < data.size(); i ++){
+   /*for(int i = 0; i < data.size(); i ++){
     System.out.println(i + " "+ data.get(i));
-   }
+   }*/
+    System.out.println(data);
   }
  }
  
+ //go to a specific line in the list
+ public void line(){}
+ 
+ //exit the program
+ public void exit(){
+   System.out.println("Thank you for using the editor!");
+   System.exit(1);                                                //exit the system with a 1
+ }
+ 
+ //get input from the user
  public void getInput(){
   String token = getTextInput.next();
-  if(token.equalsIgnoreCase("$insert")){
+  if(token.equalsIgnoreCase("$insert")){                           //check if the user enters the insert command
    insert();
    getInput();
   }
-  else if(token.equalsIgnoreCase("$delete")){
-   insert();
+  else if(token.equalsIgnoreCase("$delete")){                    //check if the user enters the delete command
+   int start = getTextInput.nextInt();
+   int end = getTextInput.nextInt();
+    delete(start,end);
    getInput();
   }
-  else if(token.equalsIgnoreCase("$print")){
+  else if(token.equalsIgnoreCase("$print")){                      //check if the user enters the print command
    print();
    getInput();
   }
+  else if(token.equalsIgnoreCase("exit")){                         //check if the user enters the exit command
+    exit();
+  }
    
   else{
-   System.out.println("Please enter a '$' followed by a command.");
+   System.out.println("Please enter a '$' followed by a command."); //tell the user to enter proper command
    getInput();
   }
  }
 
  public static void main(String[] args) {
   System.out.println("Welcome to the Editor");
-  new Editor();
+  new Editor();                                                    //start the editor
  }
 
 }
