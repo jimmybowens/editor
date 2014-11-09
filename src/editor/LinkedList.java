@@ -56,10 +56,10 @@ class LinkedList{
  */
  
  //find a link based on its data
- public Link find(String data){
+ public Link search(String data){
   Link theLink = firstLink;
   if(!isEmpty()){
-   while(theLink.data != data){
+   while(!theLink.data.equalsIgnoreCase(data)){
     if(theLink.next == null){
      return null;
     } else {
@@ -71,6 +71,23 @@ class LinkedList{
   }
   return theLink; 
  }
+ 
+ public Link hasString(String data){
+	  Link theLink = firstLink;
+	  if(!isEmpty()){
+	   while(!theLink.data.toLowerCase().contains(data.toLowerCase())){
+	    if(theLink.next == null){
+	     return null;
+	    } else {
+	     theLink = theLink.next;
+	    }
+	   }
+	  } else {
+	   System.out.println("Empty LinkedList");
+	  }
+	  return theLink; 
+	 }
+ 
  
  //return the link matching the index
  public Link getIndex(int index){
